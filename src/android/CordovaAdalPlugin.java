@@ -234,7 +234,7 @@ public class CordovaAdalPlugin extends CordovaPlugin {
             return true;
         }
 
-        String key = CacheKey.createCacheKey(itemAuthority, resource, clientId, isMultipleResourceRefreshToken, userId);
+        String key = CacheKey.createCacheKey(itemAuthority, resource, clientId, isMultipleResourceRefreshToken, userId, null);
         authContext.getCache().removeItem(key);
 
         callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK));
