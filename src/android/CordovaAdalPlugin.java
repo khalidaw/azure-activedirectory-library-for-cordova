@@ -283,7 +283,7 @@ public class CordovaAdalPlugin extends CordovaPlugin {
             try {
                 SecretKey secretKey = this.createSecretKey(key);
                 AuthenticationSettings.INSTANCE.setSecretKey(secretKey.getEncoded());
-                callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK));
+                callbackContext.success();
             } catch (Exception e) {
                 Log.w("CordovaAdalPlugin", "Unable to create secret: " + e.getMessage());
                 callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, e.getMessage()));
