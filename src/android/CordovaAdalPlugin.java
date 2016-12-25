@@ -136,12 +136,10 @@ public class CordovaAdalPlugin extends CordovaPlugin {
             String key = args.getString(0);
             return setSecretKey(key);
         } else if (action.equals("getBrokerUri")) {
-            String authority = args.getString(0);
-            boolean validateAuthority = args.optBoolean(1, true);
             String uriResult = "not calculated yet";
 
             try {
-                uriResult = getOrCreateContext(authority, validateAuthority).getRedirectUriForBroker();
+                uriResult = getOrCreateContext("https://login.windows.net/common", true).getRedirectUriForBroker();
             } catch (Exception e) {
                 callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, e.getMessage()));
                 return true;
