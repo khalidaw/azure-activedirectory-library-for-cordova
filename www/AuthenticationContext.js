@@ -65,7 +65,7 @@ AuthenticationContext.createAsync = function (authority, validateAuthority) {
 
 AuthenticationContext.getBrokerUri = function (authority, validateAuthority) {
 
-    checkArgs('s*', 'AuthenticationContext.createAsync', arguments);
+    // checkArgs('s*', 'AuthenticationContext.createAsync', arguments);
 
     var d = new Deferred();
 
@@ -73,8 +73,8 @@ AuthenticationContext.getBrokerUri = function (authority, validateAuthority) {
         validateAuthority = true;
     }
 
-    bridge.executeNativeMethod('getBrokerUri', [authority, validateAuthority]).then(function () {
-        d.resolve(new AuthenticationContext(authority, validateAuthority));
+    bridge.executeNativeMethod('getBrokerUri', [authority, validateAuthority]).then(function (result) {
+        d.resolve(result);
     }, function(err) {
         d.reject(err);
     });
