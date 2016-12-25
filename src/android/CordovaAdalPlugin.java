@@ -138,8 +138,16 @@ public class CordovaAdalPlugin extends CordovaPlugin {
         } else if (action.equals("getBrokerUri")) {
             String authority = args.getString(0);
             boolean validateAuthority = args.optBoolean(1, true);
+            String uriResult = "not calculated yet";
 
-            CallbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, getOrCreateContext(authority, validateAuthority).getBrokerRedirectUri()));
+            try {
+                uriResult = getOrCreateContext(authority, validateAuthority).getRedirectUriForBroker();
+            } catch (Exception e) {
+                callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, e.getMessage()));
+                return true;
+            }
+
+            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, uriResult));
             return true;
         }
 
