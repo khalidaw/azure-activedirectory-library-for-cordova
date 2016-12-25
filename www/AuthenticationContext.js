@@ -63,6 +63,25 @@ AuthenticationContext.createAsync = function (authority, validateAuthority) {
     return d;
 };
 
+AuthenticationContext.getBrokerUri = function (authority, validateAuthority) {
+
+    checkArgs('s*', 'AuthenticationContext.createAsync', arguments);
+
+    var d = new Deferred();
+
+    if (validateAuthority !== false) {
+        validateAuthority = true;
+    }
+
+    bridge.executeNativeMethod('getBrokerUri', [authority, validateAuthority]).then(function () {
+        d.resolve(new AuthenticationContext(authority, validateAuthority));
+    }, function(err) {
+        d.reject(err);
+    });
+
+    return d;
+};
+
 /**
  * Acquires token using interactive flow. It always shows UI and skips token from cache.
  *
