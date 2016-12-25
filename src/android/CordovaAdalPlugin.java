@@ -135,6 +135,8 @@ public class CordovaAdalPlugin extends CordovaPlugin {
         } else if (action.equals("setSecretKey")) {
             String key = args.getString(0);
             return setSecretKey(key);
+        } else if (actions.equals("getBrokerUri")) {
+            CallbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, getOrCreateContext(authority, validateAuthority).getBrokerRedirectUri()));
         }
 
         return false;

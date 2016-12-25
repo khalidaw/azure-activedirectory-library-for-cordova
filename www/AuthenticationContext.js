@@ -120,4 +120,18 @@ AuthenticationContext.prototype.acquireTokenSilentAsync = function (resourceUrl,
     return d;
 };
 
+AuthenticationContext.prototype.getBrokerUri = function (brokeruri) {
+
+    var d = new Deferred();
+
+    bridge.executeNativeMethod('getBrokerUri', [])
+    .then(function(uri){
+        d.resolve(uri);
+    }, function(err) {
+        d.reject(err);
+    });
+
+    return d;
+}
+
 module.exports = AuthenticationContext;
