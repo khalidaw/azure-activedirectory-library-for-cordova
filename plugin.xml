@@ -61,7 +61,7 @@
             </activity>
         </config-file>
 
-        <framework src="src/android/adal-1.10.0-sources.jar" custom="true" />" />
+        <lib-file src="src/android/adal-1.10.0-sources.jar" />
 
         <source-file src="src/android/CordovaAdalPlugin.java" target-dir="src/com/microsoft/aad/adal" />
         <source-file src="src/android/DefaultAuthenticationCallback.java" target-dir="src/com/microsoft/aad/adal" />
