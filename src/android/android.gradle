@@ -1,0 +1,20 @@
+
+repositories{    
+  jcenter()
+  flatDir {
+      dirs 'aar'
+   }
+}
+
+dependencies {
+  compile 'com.android.support:appcompat-v7:25.0.0'
+  compile 'com.google.code.gson:gson:2.2.4'
+  compile(name:'adal-1.10.0', ext:'aar')
+}
+
+android {
+  packagingOptions {
+    exclude 'META-INF/NOTICE'
+    exclude 'META-INF/LICENSE'
+  }
+}
